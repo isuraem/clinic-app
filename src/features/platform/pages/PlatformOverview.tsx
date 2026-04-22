@@ -28,12 +28,12 @@ export default function PlatformOverview() {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
         <div>
           <h1 className="text-2xl font-bold text-gray-900">Platform Overview</h1>
           <p className="text-gray-500 text-sm mt-0.5">All clinics across the Dermis network</p>
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 flex-wrap">
           {pending.length > 0 && (
             <Link to="/platform/approvals">
               <Button variant="danger" size="sm">
@@ -89,9 +89,9 @@ export default function PlatformOverview() {
           />
           <div className="space-y-2">
             {pending.map((c) => (
-              <div key={c.id} className="flex items-center justify-between bg-white rounded-xl p-3 border border-amber-100">
+              <div key={c.id} className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 bg-white rounded-xl p-3 border border-amber-100">
                 <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-lg bg-amber-100 flex items-center justify-center">
+                  <div className="w-8 h-8 rounded-lg bg-amber-100 flex items-center justify-center flex-shrink-0">
                     <BuildingStorefrontIcon className="w-4 h-4 text-amber-600" />
                   </div>
                   <div>
@@ -119,7 +119,7 @@ export default function PlatformOverview() {
           />
         </div>
         <div className="overflow-x-auto">
-          <table className="w-full text-sm">
+          <table className="w-full text-sm min-w-[600px]">
             <thead>
               <tr className="border-b border-gray-100">
                 {['Clinic', 'Location', 'Plan', 'Patients', 'Members', 'MRR', 'Status'].map((h) => (

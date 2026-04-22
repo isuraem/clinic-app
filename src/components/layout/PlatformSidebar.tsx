@@ -1,30 +1,31 @@
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import clsx from 'clsx'
 import {
-  BuildingStorefrontIcon, ClockIcon, CheckCircleIcon,
+  BuildingStorefrontIcon, ClockIcon,
   ChartBarSquareIcon, Cog6ToothIcon, ArrowLeftOnRectangleIcon,
-  ShieldCheckIcon, BellAlertIcon,
+  ShieldCheckIcon,
 } from '@heroicons/react/24/outline'
 import { useAppDispatch, useAppSelector } from '@/app/hooks'
 import { logout } from '@/features/auth/authSlice'
-import { useNavigate } from 'react-router-dom'
 
 const nav = [
-  { to: '/platform',           icon: ChartBarSquareIcon,      label: 'Overview'      },
-  { to: '/platform/clinics',   icon: BuildingStorefrontIcon,  label: 'All Clinics'   },
-  { to: '/platform/approvals', icon: ClockIcon,               label: 'Approvals'     },
-  { to: '/platform/analytics', icon: ChartBarSquareIcon,      label: 'Analytics'     },
-  { to: '/platform/settings',  icon: Cog6ToothIcon,           label: 'Platform Settings' },
+  { to: '/platform',           icon: ChartBarSquareIcon,     label: 'Overview'          },
+  { to: '/platform/clinics',   icon: BuildingStorefrontIcon, label: 'All Clinics'       },
+  { to: '/platform/approvals', icon: ClockIcon,              label: 'Approvals'         },
+  { to: '/platform/analytics', icon: ChartBarSquareIcon,     label: 'Analytics'         },
+  { to: '/platform/settings',  icon: Cog6ToothIcon,          label: 'Platform Settings' },
 ]
 
-export default function PlatformSidebar() {
-  const dispatch    = useAppDispatch()
-  const navigate    = useNavigate()
-  const metrics     = useAppSelector((s) => s.platform.platformMetrics)
+interface Props { onClose?: () => void }
+
+export default function PlatformSidebar({ onClose }: Props) {
+  const dispatch     = useAppDispatch()
+  const navigate     = useNavigate()
+  const metrics      = useAppSelector((s) => s.platform.platformMetrics)
   const pendingCount = metrics?.pendingApprovals ?? 0
 
   return (
-    <aside className="flex flex-col w-60 min-h-screen bg-slate-900 border-r border-slate-800">
+    <aside className="flex flex-col w-60 h-full min-h-screen bg-slate-900 border-r border-slate-800">
       {/* Logo */}
       <div className="px-5 py-5 border-b border-slate-800">
         <div className="flex items-center gap-2.5">
@@ -45,6 +46,7 @@ export default function PlatformSidebar() {
             key={to}
             to={to}
             end={to === '/platform'}
+            onClick={onClose}
             className={({ isActive }) =>
               clsx(
                 'flex items-center gap-3 px-3 py-2 rounded-xl text-sm font-medium transition-colors',
@@ -65,7 +67,7 @@ export default function PlatformSidebar() {
         ))}
       </nav>
 
-      {/* Bottom actions */}
+      {/* Logout */}
       <div className="px-3 py-4 border-t border-slate-800">
         <button
           onClick={() => { dispatch(logout()); navigate('/login') }}

@@ -42,10 +42,10 @@ export default function AppBuilderPage() {
     <div className="-mx-6 -mt-8 flex flex-col min-h-screen">
       {/* Top bar */}
       <div className="px-6 pt-6 pb-0 bg-white border-b border-gray-100">
-        <div className="flex items-center justify-between mb-4">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-4">
           <h1 className="text-2xl font-bold text-gray-900">App Builder</h1>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 flex-wrap">
             {/* User */}
             <div className="flex items-center gap-2 text-sm text-gray-600">
               <UserCircleIcon className="w-5 h-5 text-gray-400" />
@@ -69,14 +69,14 @@ export default function AppBuilderPage() {
           </div>
         </div>
 
-        {/* Tabs */}
-        <div className="flex items-end gap-0">
+        {/* Tabs — scrollable on small screens */}
+        <div className="flex items-end gap-0 overflow-x-auto scrollbar-hide -mx-6 px-6">
           {TABS.map(({ key, label }) => (
             <button
               key={key}
               onClick={() => setActiveTab(key)}
               className={clsx(
-                'px-4 py-2.5 text-sm font-medium border-b-2 transition-all whitespace-nowrap',
+                'px-4 py-2.5 text-sm font-medium border-b-2 transition-all whitespace-nowrap flex-shrink-0',
                 activeTab === key
                   ? 'border-brand-500 text-brand-600'
                   : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-200',

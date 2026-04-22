@@ -60,15 +60,15 @@ export default function ClinicDetailPage() {
         <Link to="/platform/clinics" className="flex items-center gap-1.5 text-sm text-gray-500 hover:text-gray-700 mb-4">
           <ArrowLeftIcon className="w-4 h-4" /> All Clinics
         </Link>
-        <div className="flex items-start justify-between gap-4">
+        <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
           <div className="flex items-center gap-4">
-            <div className="w-14 h-14 rounded-2xl bg-indigo-50 flex items-center justify-center border border-indigo-100">
+            <div className="w-14 h-14 rounded-2xl bg-indigo-50 flex items-center justify-center border border-indigo-100 flex-shrink-0">
               <BuildingStorefrontIcon className="w-7 h-7 text-indigo-500" />
             </div>
             <div>
               <h1 className="text-2xl font-bold text-gray-900">{clinic.name}</h1>
               <p className="text-gray-500 text-sm">{clinic.ownerName} · {clinic.city}, {clinic.country}</p>
-              <div className="flex gap-2 mt-1.5">
+              <div className="flex flex-wrap gap-2 mt-1.5">
                 <Badge variant={statusBadge[clinic.reviewStatus] ?? 'gray'} dot className="capitalize">{clinic.reviewStatus}</Badge>
                 <Badge variant={planColor[clinic.plan]} className="capitalize">{clinic.plan} plan</Badge>
                 {clinic.stripeConnected && <Badge variant="green">Stripe Connected</Badge>}
@@ -76,7 +76,7 @@ export default function ClinicDetailPage() {
               </div>
             </div>
           </div>
-          <div className="flex gap-2 flex-shrink-0">
+          <div className="flex gap-2 flex-shrink-0 sm:self-start">
             {clinic.reviewStatus === 'pending' && (
               <Button onClick={handleApprove}>
                 <CheckCircleIcon className="w-4 h-4" /> Approve
@@ -190,7 +190,7 @@ export default function ClinicDetailPage() {
       {clinic.reviewStatus === 'approved' && (
         <Card className="border-red-100">
           <CardHeader title="Danger Zone" subtitle="Irreversible platform actions" />
-          <div className="flex items-center justify-between bg-red-50 rounded-xl p-4 border border-red-100">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 bg-red-50 rounded-xl p-4 border border-red-100">
             <div>
               <p className="text-sm font-semibold text-red-800">Suspend Clinic</p>
               <p className="text-xs text-red-600 mt-0.5">Immediately revokes clinic access. Patients retain their data.</p>

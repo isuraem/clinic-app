@@ -77,7 +77,8 @@ export default function ClinicsListPage() {
 
       {/* Table */}
       <div className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
-        <table className="w-full text-sm">
+        <div className="overflow-x-auto">
+        <table className="w-full text-sm min-w-[760px]">
           <thead>
             <tr className="border-b border-gray-100 bg-gray-50">
               {['Clinic', 'Owner', 'Location', 'Plan', 'Patients', 'MRR', 'Status', 'Joined', ''].map((h) => (
@@ -178,6 +179,7 @@ export default function ClinicsListPage() {
             ))}
           </tbody>
         </table>
+        </div>
       </div>
     </div>
   )
