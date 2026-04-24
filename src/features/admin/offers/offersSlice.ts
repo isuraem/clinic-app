@@ -40,7 +40,7 @@ const mockOffers: Offer[] = [
     id: 'o4', clinicId: 'clinic-demo', title: 'Summer Glow Campaign',
     description: 'Kick off summer with a free skin consultation.',
     offerType: 'free_treatment', triggerType: 'manual',
-    freeTreatmentId: 't4',
+    freeProductId: 'p5',
     isActive: false, sentCount: 0, redemptionCount: 0,
     createdAt: '2024-03-01T00:00:00Z',
   },

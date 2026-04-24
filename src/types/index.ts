@@ -31,11 +31,12 @@ export interface User {
   createdAt: string
 }
 
-// ─── Treatments / CMS ─────────────────────────────────────────────────────────
+// ─── Products / CMS ───────────────────────────────────────────────────────────
 
-export type PricingType = 'individual' | 'bundle' | 'variation'
+export type PricingType  = 'individual' | 'bundle' | 'variation'
+export type ProductType  = 'unit' | 'session' | 'syringe' | 'vial' | 'package' | 'treatment' | 'area'
 
-export interface TreatmentVariation {
+export interface ProductVariation {
   id: string
   label: string      // e.g. "Upper Face", "Full Face"
   price: number
@@ -63,20 +64,21 @@ export interface BeforeAfterImage {
   beforeUrl: string
   afterUrl: string
   caption?: string
-  treatmentId: string
+  productId: string
 }
 
-export interface Treatment {
+export interface Product {
   id: string
   clinicId: string
   name: string
+  productType: ProductType
   category: string
   concern: string[]         // ['anti-aging', 'acne', 'pigmentation']
   description: string
   pricingType: PricingType
   basePrice?: number        // for individual
   memberPrice?: number
-  variations?: TreatmentVariation[]
+  variations?: ProductVariation[]
   bundles?: BundleTier[]
   durationMinutes: number
   coverImageUrl?: string
@@ -89,6 +91,9 @@ export interface Treatment {
   createdAt: string
 }
 
+/** @deprecated use Product */
+export type Treatment = Product
+
 // ─── Memberships ──────────────────────────────────────────────────────────────
 
 export type RolloverMode = 'stack' | 'expire'
@@ -99,7 +104,7 @@ export interface MembershipTier {
   name: string
   monthlyPrice: number
   annualPrice?: number
-  includedTreatments: { treatmentId: string; sessionsPerMonth: number }[]
+  includedProducts: { productId: string; sessionsPerMonth: number }[]
   rolloverMode: RolloverMode
   rolloverCapSessions?: number
   perks: string[]
@@ -139,7 +144,7 @@ export interface Offer {
   discountPercent?: number
   discountFixed?: number
   pointsBonus?: number
-  freeTreatmentId?: string
+  freeProductId?: string
   scratchRevealValue?: string   // what the scratch card reveals
   voiceMessageUrl?: string      // birthday voice note
   isActive: boolean
@@ -200,7 +205,7 @@ export interface SkinProfile {
 }
 
 export interface CartItem {
-  treatmentId: string
+  productId: string
   name: string
   imageUrl?: string
   pricingType: PricingType
