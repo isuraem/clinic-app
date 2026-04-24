@@ -7,7 +7,7 @@ import Modal from '@/components/ui/Modal'
 import Button from '@/components/ui/Button'
 
 // Tab content
-import TreatmentsPage  from '@/features/admin/treatments/components/TreatmentsPage'
+import ProductsPage    from '@/features/admin/products/components/ProductsPage'
 import OffersPage      from '@/features/admin/offers/components/OffersPage'
 import MembershipsPage from '@/features/admin/memberships/components/MembershipsPage'
 import SettingsPage    from '@/features/admin/settings/SettingsPage'
@@ -92,7 +92,7 @@ export default function AppBuilderPage() {
       <div className="flex-1 px-6 py-6 bg-gray-50">
         {activeTab === 'custom-plans' && <CustomPlansTab />}
         {activeTab === 'offers'       && <OffersPage />}
-        {activeTab === 'products'     && <TreatmentsPage />}
+        {activeTab === 'products'     && <ProductsPage />}
         {activeTab === 'membership'   && <MembershipsPage />}
         {activeTab === 'rewards'      && <RewardsTab />}
         {activeTab === 'settings'     && <SettingsPage />}

@@ -13,7 +13,7 @@ const mockTiers: MembershipTier[] = [
   {
     id: 'm1', clinicId: 'clinic-demo', name: 'Glow Starter',
     monthlyPrice: 49, annualPrice: 499,
-    includedTreatments: [{ treatmentId: 't1', sessionsPerMonth: 1 }],
+    includedProducts: [{ productId:'t1', sessionsPerMonth: 1 }],
     rolloverMode: 'stack', rolloverCapSessions: 3,
     perks: ['10% off all treatments', '1x HydraFacial/month', 'Priority booking', 'Exclusive member offers'],
     isActive: true, createdAt: '2024-01-01T00:00:00Z',
@@ -21,9 +21,9 @@ const mockTiers: MembershipTier[] = [
   {
     id: 'm2', clinicId: 'clinic-demo', name: 'Dermis Elite',
     monthlyPrice: 99, annualPrice: 999,
-    includedTreatments: [
-      { treatmentId: 't1', sessionsPerMonth: 1 },
-      { treatmentId: 't4', sessionsPerMonth: 1 },
+    includedProducts: [
+      { productId: 'p1', sessionsPerMonth: 1 },
+      { productId: 'p5', sessionsPerMonth: 1 },
     ],
     rolloverMode: 'stack', rolloverCapSessions: 6,
     perks: ['20% off all treatments', '1x HydraFacial + 1x Skin Reset/month', 'Free annual skin analysis', 'VIP booking window', 'Exclusive birthday reward'],
@@ -32,7 +32,7 @@ const mockTiers: MembershipTier[] = [
   {
     id: 'm3', clinicId: 'clinic-demo', name: 'Laser Unlimited',
     monthlyPrice: 199, annualPrice: 1999,
-    includedTreatments: [{ treatmentId: 't3', sessionsPerMonth: 2 }],
+    includedProducts: [{ productId:'t3', sessionsPerMonth: 2 }],
     rolloverMode: 'expire',
     perks: ['Unlimited laser sessions (2/month)', '25% off other treatments', 'Free consultations', 'Dedicated therapist'],
     isActive: true, createdAt: '2024-01-01T00:00:00Z',

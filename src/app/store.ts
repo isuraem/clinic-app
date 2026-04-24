@@ -5,7 +5,7 @@ import { combineReducers } from '@reduxjs/toolkit'
 
 import authReducer        from '@/features/auth/authSlice'
 import dashboardReducer   from '@/features/admin/dashboard/dashboardSlice'
-import treatmentsReducer  from '@/features/admin/treatments/treatmentsSlice'
+import productsReducer    from '@/features/admin/products/productsSlice'
 import membershipsReducer from '@/features/admin/memberships/membershipsSlice'
 import offersReducer      from '@/features/admin/offers/offersSlice'
 import billingReducer     from '@/features/admin/billing/billingSlice'
@@ -15,7 +15,7 @@ import platformReducer    from '@/features/platform/platformSlice'
 const rootReducer = combineReducers({
   auth:         authReducer,
   dashboard:    dashboardReducer,
-  treatments:   treatmentsReducer,
+  products:     productsReducer,
   memberships:  membershipsReducer,
   offers:       offersReducer,
   billing:      billingReducer,
